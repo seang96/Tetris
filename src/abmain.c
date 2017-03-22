@@ -33,6 +33,7 @@ Examples:
 
 /* Local headers */
 #include "ablibs.h"
+#include "Engine.h"
 #include "abimport.h"
 #include "proto.h"
 #include "abwidgets.h"
@@ -41,11 +42,12 @@ Examples:
 #include "ablinks.h"
 #include "abvars.h"
 
+
+
 int
 main ( int argc, char *argv[] )
 
 	{
-
 	_Ap_.Ap_winstate = 0;
 
 	/* AppBuilder Initialization */
@@ -54,6 +56,13 @@ main ( int argc, char *argv[] )
 	/* Display main window */
 	ApLinkWindow( NULL, &AbApplLinks[0], NULL );
 
+	if (argc >= 2 && strcmp(argv[1], "-d") == 0)
+		isDebuggingEnabled = 1;
+	else
+	{
+		isDebuggingEnabled = 0;
+		PtDestroyWidget(ABW_GridDebug);
+	}
 	/* Loop until user quits application */
 	PtMainLoop( );
 	PtExit( 0 );
@@ -65,6 +74,8 @@ static const ApClassTab_t ClassTable[] = {
 	{ "PtWindow", &PtWindow },
 	{ "PtButton", &PtButton },
 	{ "PtGrid", &PtGrid },
+	{ "PtLabel", &PtLabel },
+	{ "PtRect", &PtRect },
 	{ NULL, NULL }
 	};
 
