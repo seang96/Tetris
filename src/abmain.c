@@ -40,6 +40,7 @@ Examples:
 #include "abevents.h"
 #include "ablinks.h"
 #include "abvars.h"
+#include "Engine.h"
 
 int
 main ( int argc, char *argv[] )
@@ -54,6 +55,9 @@ main ( int argc, char *argv[] )
 	/* Display main window */
 	ApLinkWindow( NULL, &AbApplLinks[0], NULL );
 
+
+	startUp(argc, argv);
+
 	/* Loop until user quits application */
 	PtMainLoop( );
 	PtExit( 0 );
@@ -65,6 +69,9 @@ static const ApClassTab_t ClassTable[] = {
 	{ "PtWindow", &PtWindow },
 	{ "PtButton", &PtButton },
 	{ "PtGrid", &PtGrid },
+	{ "PtLabel", &PtLabel },
+	{ "PtRect", &PtRect },
+	{ "PtTimer", &PtTimer },
 	{ NULL, NULL }
 	};
 
