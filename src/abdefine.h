@@ -17,6 +17,8 @@ extern const int ABN_testLabel;
 #define ABW_testLabel                        AbGetABW( ABN_testLabel )
 extern const int ABN_AutoFall;
 #define ABW_AutoFall                         AbGetABW( ABN_AutoFall )
+extern const int ABN_Rotatebutton;
+#define ABW_Rotatebutton                     AbGetABW( ABN_Rotatebutton )
 
 #define AbGetABW( n ) ( AbWidgets[ n ].wgt )
 

@@ -3,7 +3,7 @@
 #include "abdefine.h"
 
 extern ApWindowLink_t base;
-extern ApWidget_t AbWidgets[ 8 ];
+extern ApWidget_t AbWidgets[ 9 ];
 
 
 #ifdef __cplusplus
@@ -14,6 +14,7 @@ int clickLeft( PtWidget_t *widget, ApInfo_t *data, PtCallbackInfo_t *cbinfo );
 int clickRight( PtWidget_t *widget, ApInfo_t *data, PtCallbackInfo_t *cbinfo );
 int clickDown( PtWidget_t *widget, ApInfo_t *data, PtCallbackInfo_t *cbinfo );
 int moveDownTimer( PtWidget_t *widget, ApInfo_t *data, PtCallbackInfo_t *cbinfo );
+int rotatecw( PtWidget_t *widget, ApInfo_t *data, PtCallbackInfo_t *cbinfo );
 #ifdef __cplusplus
 }
 #endif

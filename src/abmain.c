@@ -55,7 +55,6 @@ main ( int argc, char *argv[] )
 	/* Display main window */
 	ApLinkWindow( NULL, &AbApplLinks[0], NULL );
 
-
 	startUp(argc, argv);
 
 	/* Loop until user quits application */

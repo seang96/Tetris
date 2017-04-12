@@ -6,8 +6,8 @@ Block createBlock(int x, int y, PgColor_t color)
 		 *block;
 
 	PtArg_t args[3];
-	PhPoint_t pos = { x*20,y*20 };
-	PhDim_t size = { 20, 20 };
+	PhPoint_t pos = { x*BlockDimension,y*BlockDimension };
+	PhDim_t size = { BlockDimension, BlockDimension };
 	PtSetArg(&args[0], Pt_ARG_POS, &pos, 0);
 	PtSetArg(&args[1], Pt_ARG_DIM, &size, 0);
 	PtSetArg(&args[2], Pt_ARG_FILL_COLOR, color, 0);
@@ -27,83 +27,97 @@ Block createBlock(int x, int y, PgColor_t color)
 
 void createI(void)
 {
-	activeBlocks[0] = createBlock(10, 0, Pg_VGA8);
-	activeBlocks[1] = createBlock(11, 0, Pg_VGA8);
-	activeBlocks[2] = createBlock(12, 0, Pg_VGA8);
-	activeBlocks[3] = createBlock(13, 0, Pg_VGA8);
+	rotation = 0;
+	type = I;
+	activeBlocks[0] = createBlock(MiddleBlock - 2	, 0, Pg_VGA8);
+	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGA8);
+	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGA8);
+	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGA8);
 }
 
 void createJ(void)
 {
-	activeBlocks[0] = createBlock(11, 0, Pg_VGA9);
-	activeBlocks[1] = createBlock(12, 0, Pg_VGA9);
-	activeBlocks[2] = createBlock(13, 0, Pg_VGA9);
-	activeBlocks[3] = createBlock(13, 1, Pg_VGA9);
+	rotation = 0;
+	type = J;
+	activeBlocks[0] = createBlock(MiddleBlock + 1	, 1, Pg_VGA9);
+	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGA9);
+	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGA9);
+	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGA9);
 }
 
 void createL(void)
 {
-	activeBlocks[0] = createBlock(11, 0, Pg_VGAA);
-	activeBlocks[1] = createBlock(12, 0, Pg_VGAA);
-	activeBlocks[2] = createBlock(13, 0, Pg_VGAA);
-	activeBlocks[3] = createBlock(11, 1, Pg_VGAA);
+	rotation = 0;
+	type = L;
+	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAA);
+	activeBlocks[1] = createBlock(MiddleBlock	, 0, Pg_VGAA);
+	activeBlocks[2] = createBlock(MiddleBlock + 1	, 0, Pg_VGAA);
+	activeBlocks[3] = createBlock(MiddleBlock - 1	, 0, Pg_VGAA);
 }
 
 void createO(void)
 {
-	activeBlocks[0] = createBlock(11, 0, Pg_VGAB);
-	activeBlocks[1] = createBlock(11, 1, Pg_VGAB);
-	activeBlocks[2] = createBlock(12, 0, Pg_VGAB);
-	activeBlocks[3] = createBlock(12, 1, Pg_VGAB);
+	rotation = 0;
+	type = O;
+	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAB);
+	activeBlocks[1] = createBlock(MiddleBlock	, 1, Pg_VGAB);
+	activeBlocks[2] = createBlock(MiddleBlock - 1	, 0, Pg_VGAB);
+	activeBlocks[3] = createBlock(MiddleBlock	, 0, Pg_VGAB);
 }
 
 void createS(void)
 {
-	activeBlocks[0] = createBlock(11, 1, Pg_VGAC);
-	activeBlocks[1] = createBlock(12, 0, Pg_VGAC);
-	activeBlocks[2] = createBlock(12, 1, Pg_VGAC);
-	activeBlocks[3] = createBlock(13, 0, Pg_VGAC);
-} 
+	rotation = 0;
+	type = S;
+	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAC);
+	activeBlocks[1] = createBlock(MiddleBlock	, 1, Pg_VGAC);
+	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGAC);
+	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGAC);
+}
 
 void createT(void)
 {
-	activeBlocks[0] = createBlock(11, 0, Pg_VGAD);
-	activeBlocks[1] = createBlock(12, 0, Pg_VGAD);
-	activeBlocks[2] = createBlock(13, 0, Pg_VGAD);
-	activeBlocks[3] = createBlock(12, 1, Pg_VGAD);
+	rotation = 0;
+	type = T;
+	activeBlocks[0] = createBlock(MiddleBlock	, 1, Pg_VGAD);
+	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGAD);
+	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGAD);
+	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGAD);
 }
 
 void createZ(void)
 {
-	activeBlocks[0] = createBlock(11, 0, Pg_VGAE);
-	activeBlocks[1] = createBlock(12, 0, Pg_VGAE);
-	activeBlocks[2] = createBlock(12, 1, Pg_VGAE);
-	activeBlocks[3] = createBlock(13, 1, Pg_VGAE);
+	rotation = 0;
+	type = Z;
+	activeBlocks[0] = createBlock(MiddleBlock	, 1, Pg_VGAE);
+	activeBlocks[1] = createBlock(MiddleBlock + 1	, 1, Pg_VGAE);
+	activeBlocks[2] = createBlock(MiddleBlock - 1	, 0, Pg_VGAE);
+	activeBlocks[3] = createBlock(MiddleBlock	, 0, Pg_VGAE);
 }
 
 void createPiece(void)
 {
-	int type = rand() % 6;
+	int type = rand() % 7;
 	switch (type) {
-		case 0:
+		case I:
 			createI();
 			break;
-		case 1:
+		case J:
 			createJ();
 			break;
-		case 2:
+		case L:
 			createL();
 			break;
-		case 3:
+		case O:
 			createO();
 			break;
-		case 4:
+		case S:
 			createS();
 			break;
-		case 5:
+		case T:
 			createT();
 			break;
-		case 6:
+		case Z:
 			createZ();
 			break;
 	}
@@ -120,6 +134,7 @@ void clearBlocks(void)
 	int x;
 	for (x = 0; x < GridSize; x++)
 	{
+		lineBlockCount[x] = 0;
 		int y;
 		for (y = 0; y < GridSize; y++)
 		{
@@ -136,6 +151,42 @@ void clearBlocks(void)
 		{
 			PtDestroyWidget(activeBlocks[x].b);
 			activeBlocks[x].b = 0;
+		}
+	}
+}
+
+int checkLoseGame(void)
+{
+
+}
+
+void clearLines(void)
+{
+	int blockIndex;
+	for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
+	{
+		int row = activeBlocks[blockIndex].y;
+		lineBlockCount[row]++;
+		if (lineBlockCount[row] == GridSize)
+		{
+			int rowIndex;
+			for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
+			{
+				if (GRID[rowIndex][row].block != 0)
+				{
+					PtDestroyWidget(GRID[rowIndex][row].block);
+					GRID[rowIndex][row].block = 0;
+				}
+			}
+			int currRow;
+			for (currRow = 0; currRow < row; currRow++)
+			{
+				for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
+				{
+					if (GRID[rowIndex][currRow].block != 0)
+						moveBlock(&GRID[rowIndex][currRow].block, 0, 1);
+				}
+			}
 		}
 	}
 }
@@ -162,8 +213,33 @@ void moveDown(void)
 	if (isMoveValid(DOWN))
 		for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
 			moveBlock(&activeBlocks[blockIndex], 0, 1);
-	else
+	else {
+		clearLines();
 		createPiece();
+	}
+}
+
+int isRotateValid(int x[], int y[])
+{
+	int xMinBound = -1, yMinBound = -1, xMaxBound = GridSize - 1, yMaxBound = GridSize - 1;
+	int b_iter;
+	for (b_iter = 0; b_iter < BlockSize; b_iter++)
+	{
+		if (activeBlocks[b_iter].b == 0) return 0;	//Fail if no active block
+		int new_x = activeBlocks[b_iter].x + x[b_iter];
+		int new_y = activeBlocks[b_iter].y + y[b_iter];
+		if (new_x == xMinBound || new_y == yMinBound ||	//Fail if x is out of bounds
+			new_x == xMaxBound || new_y == yMaxBound)	//Fail if y is out of bounds
+			return 0;
+		else if (GRID[new_x][new_y].block != 0)	//Fail if a inactive block is in the new position
+		{
+			PtWidget_t *block = GRID[new_x][new_y].block;
+			if (activeBlocks[0].b != block && activeBlocks[1].b != block &&
+				activeBlocks[2].b != block && activeBlocks[3].b != block)
+				return 0;
+		}		
+	}
+	return 1;
 }
 
 int isMoveValid(int direction) {
@@ -189,7 +265,7 @@ int isMoveValid(int direction) {
 			return 0;
 
 		//Check if colliding with an inactive block
-		int adjacentBlockX = -1, adjacentBlockY = -1;
+		int adjacentBlockX, adjacentBlockY;
 		if (direction == LEFT)
 		{
 			adjacentBlockX = activeBlocks[blockIndex].x - 1;
@@ -203,14 +279,7 @@ int isMoveValid(int direction) {
 			adjacentBlockX = activeBlocks[blockIndex].x;
 			adjacentBlockY = activeBlocks[blockIndex].y + 1;
 		}
-		if (isDebuggingEnabled && blockIndex == 3)
-		{
-			char debugDisplay[100];
-			sprintf(debugDisplay, "adjacentX: %ld\n adjacentBlockY: %ld\n", adjacentBlockX, adjacentBlockY);
-			debug(debugDisplay);
-		}
-		if (adjacentBlockX > -1 && adjacentBlockY > -1 && 
-			GRID[adjacentBlockX][adjacentBlockY].block != 0)
+		if(GRID[adjacentBlockX][adjacentBlockY].block != 0)
 		{
 			PtWidget_t *block = GRID[adjacentBlockX][adjacentBlockY].block;
 			if (activeBlocks[0].b != block && activeBlocks[1].b != block &&
@@ -221,9 +290,10 @@ int isMoveValid(int direction) {
 	}
 	return 1;
 }
+
 void moveBlock(Block *block, int difX, int difY)
 {
-	PhPoint_t pos = {(block->x + difX)*20, (block->y + difY)*20};
+	PhPoint_t pos = {(block->x + difX)*BlockDimension, (block->y + difY)*BlockDimension};
 	PtArg_t args[1];
 
 	PtSetArg(&args[0], Pt_ARG_POS, &pos, 0);
@@ -239,14 +309,74 @@ void moveBlock(Block *block, int difX, int difY)
 	{
 		char debugDisplay[100];
 		sprintf(debugDisplay, "0: .x: %ld .y: %ld\n1: .x: %ld .y: %ld\n2: .x: %ld .y: %ld\n3: .x: %ld .y: %ld\n", activeBlocks[0].x, activeBlocks[0].y,activeBlocks[1].x, activeBlocks[1].y, activeBlocks[2].x, activeBlocks[2].y, activeBlocks[3].x, activeBlocks[3].y);
-		//debug(debugDisplay);
+		debug(debugDisplay);
+	}
+}
+
+void rotateBlock(void)
+{
+	int x[BlockSize];
+	int y[BlockSize]; 
+	int tmp_rotation;
+	switch (type) {
+		case I:
+			if (rotation == 0)
+			{
+				x[0] = 1; y[0] = 2;
+				x[1] = 0; y[1] = 1;
+				x[2] = -1; y[2] = 0;
+				x[3] = -2; y[3] = -1;
+				tmp_rotation = 1;
+			} else {
+				x[0] = -1; y[0] = -2;
+				x[1] = 0; y[1] = -1;
+				x[2] = 1; y[2] = 0;
+				x[3] = 2; y[3] = 1;
+				tmp_rotation = 0;
+			}
+			break;
+		case J:
+			if (rotation == 0)
+			{
+				x[0] = 0; y[0] = 0;
+				x[1] = 1; y[1] = 1;
+				x[2] = 1; y[2] = 0;
+				x[3] = 0; y[3] = -1;
+				tmp_rotation = 1;
+			}
+			else if (rotation == 1)
+			{
+				x[0] = -2; y[0] = 0;
+				x[1] = 0; y[1] = 0;
+				x[2] = 0; y[2] = 1;
+				x[3] = -2; y[3] = 1;
+				tmp_rotation = 2;
+			}
+			break;
+		case L:
+			break;
+		case O:
+			return;
+		case S:
+			break;
+		case T:
+			break;
+		case Z:
+			break;
+	}
+
+	if (isRotateValid(x, y))
+	{
+		moveBlock(&activeBlocks[0], x[0], y[0]);
+		moveBlock(&activeBlocks[1], x[1], y[1]);
+		moveBlock(&activeBlocks[2], x[2], y[2]);
+		moveBlock(&activeBlocks[3], x[3], y[3]);
+		rotation = tmp_rotation;
 	}
 }
 
 void debug(char debugDisplay[])
 {
-
-
 	PtArg_t args[1];
 	PtSetArg(&args[0], Pt_ARG_TEXT_STRING, debugDisplay, 0);
 	PtSetResources(ABW_testLabel, 1, args);
@@ -255,6 +385,7 @@ void debug(char debugDisplay[])
 void startUp(int argc, char *argv[])
 {
 	srand(time(NULL));
+	clearBlocks();
 
 	if (argc >= 2 && strcmp(argv[1], "-d") == 0)
 		isDebuggingEnabled = 1;

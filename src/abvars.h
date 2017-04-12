@@ -9,4 +9,5 @@ const int ABN_LeftButton = 4;
 const int ABN_RightButton = 5;
 const int ABN_testLabel = 6;
 const int ABN_AutoFall = 7;
+const int ABN_Rotatebutton = 8;
 

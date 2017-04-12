@@ -1,8 +1,11 @@
 /* Header Template                                       */
 
 #ifndef _HEADER_INCLUDED
-#define GridSize 24
+#define GridSize 17
 #define BlockSize 4
+#define BlockDimension 16
+#define MiddleBlock BlockDimension/2
+
 typedef struct {
 	int x;
 	int y;
