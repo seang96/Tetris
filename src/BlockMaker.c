@@ -352,16 +352,128 @@ void rotateBlock(void)
 				x[3] = -2; y[3] = 1;
 				tmp_rotation = 2;
 			}
+			else if (rotation == 2)
+			{
+				x[0] = 0; y[0] = 1;
+				x[1] = -1; y[1] = 0;
+				x[2] = -2; y[2] = -1;
+				x[3] = 1; y[3] = 0;
+				tmp_rotation = 3;
+			}
+			else if (rotation == 3)
+			{
+				x[0] = 2; y[0] = 0;
+				x[1] = 0; y[1] = 0;
+				x[2] = 1; y[2] = 1;
+				x[3] = 1; y[3] = 1;
+				tmp_rotation = 0;
+			}
 			break;
 		case L:
+			if( rotation == 0)
+			{
+				x[0] = 1; y[0] = 0;
+				x[1] = 0; y[1] = 0;
+				x[2] = -1; y[2] = -1;
+				x[3] = 0; y[3] = -1;
+				tmp_rotation = 1;
+			}
+			else if (rotation == 1)
+			{
+				x[0] = 1; y[0] = -1;
+				x[1] = 0; y[1] = 0;
+				x[2] = -1; y[2] = 1;
+				x[3] = 2; y[3] = 0;
+				tmp_rotation = 2;
+			}
+			else if (rotation == 2)
+			{
+				x[0] = -1; y[0] = 1;
+				x[1] = 1; y[1] = 1;
+				x[2] = 1; y[2] = 0;
+				x[3] = -1; y[3] = 0;
+				tmp_rotation = 3;
+			}
+			else if (rotation == 3)
+			{
+				x[0] = -1; y[0] = 0;
+				x[1] = 0; y[1] = -1;
+				x[2] = 0; y[2] = 0;
+				x[3] = -1; y[3] = 1;
+				tmp_rotation = 0;
+			}
 			break;
 		case O:
 			return;
 		case S:
+			if( rotation == 0)
+			{
+				x[0] = 1; y[0] = 0;
+				x[1] = 0; y[1] = -1;
+				x[2] = -1; y[2] = 0;
+				x[3] = -2; y[3] = -1;
+				tmp_rotation = 1;
+			}
+			else if (rotation == 1)
+			{
+				x[0] = -1; y[0] = 0;
+				x[1] = 0; y[1] = 1;
+				x[2] = 1; y[2] = 0;
+				x[3] = 2; y[3] = 1;
+				tmp_rotation = 0;
+			}
 			break;
 		case T:
+			if( rotation == 0)
+			{
+				x[0] = 0; y[0] = 0;
+				x[1] = 0; y[1] = 0;
+				x[2] = 0; y[2] = 0;
+				x[3] = -1; y[3] = -1;
+				tmp_rotation = 1;
+			}
+			else if( rotation == 1)
+			{
+				x[0] = 1; y[0] = -1;
+				x[1] = 0; y[1] = 0;
+				x[2] = 0; y[2] = 0;
+				x[3] = 0; y[3] = 0;
+				tmp_rotation = 2;
+			}
+			else if( rotation == 2)
+			{
+				x[0] = -1; y[0] = 1;
+				x[1] = 0; y[1] = 0;
+				x[2] = 2; y[2] = 0;
+				x[3] = 0; y[3] = 0;
+				tmp_rotation = 3;
+			}
+			else if( rotation == 3)
+			{
+				x[0] = 0; y[0] = 0;
+				x[1] = -1; y[1] = 0;
+				x[2] = -1; y[2] = 0;
+				x[3] = 1; y[3] = 1;
+				tmp_rotation = 0;
+			}
 			break;
 		case Z:
+			if( rotation == 0)
+			{
+				x[0] = 0; y[0] = 1;
+				x[1] = -1; y[1] = 0;
+				x[2] = 2; y[2] = 1;
+				x[3] = 1; y[3] = 0;
+				tmp_rotation = 1;		
+			}
+			else if( rotation == 1)
+			{
+				x[0] = 0; y[0] = -1;
+				x[1] = 1; y[1] = 0;
+				x[2] = -2; y[2] = -1;
+				x[3] = -1; y[3] = 0;
+				tmp_rotation = 0;		
+			}
 			break;
 	}
 
