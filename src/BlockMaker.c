@@ -163,7 +163,7 @@ int checkLoseGame(void)
 void clearLines(void)
 {
 	int blockIndex;
-	for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
+	for (blockIndex = BlockSize - 1; blockIndex >= 0; blockIndex--)
 	{
 		int row = activeBlocks[blockIndex].y;
 		lineBlockCount[row]++;
@@ -179,16 +179,85 @@ void clearLines(void)
 				}
 			}
 			int currRow;
-			for (currRow = 0; currRow < row; currRow++)
+			for (currRow = row - 1; currRow >= 0; currRow--)
 			{
 				for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
 				{
 					if (GRID[rowIndex][currRow].block != 0)
-						moveBlock(&GRID[rowIndex][currRow].block, 0, 1);
+					{
+						/*if (isDebuggingEnabled)
+						{
+							char debugDisplay[100];
+							sprintf(debugDisplay, ".x: %ld .y: %ld\n.b:%ld", rowIndex, row, GRID[rowIndex][row].block);
+							debug(debugDisplay);
+						}*/
+						Block b = {
+							.x = rowIndex,
+							.y = currRow,
+							.b = GRID[rowIndex][currRow].block,
+						};
+						moveBlock(&b, 0, 1);
+					}
+				}
+			}
+			int secondBlockIndex;
+			for (secondBlockIndex = blockIndex -1; secondBlockIndex >= 0; secondBlockIndex--)
+			{
+				if (activeBlocks[secondBlockIndex].y < row)
+					activeBlocks[secondBlockIndex].y++;
+			}
+			while (row >= 0)
+			{
+				if (row == 0)
+					lineBlockCount[row--] = 0;
+				else
+					lineBlockCount[row] = lineBlockCount[--row];
+			}
+
+		}
+	}
+	/*int row, rowsToMoveDown = 0, moved;
+	for (row = activeBlocks[0].y; row >= 0; row--)
+	{
+		if (lineBlockCount[row] == GridSize)
+		{
+			if (moved)
+				rowsToMoveDown = 0;
+			rowsToMoveDown++;
+			int rowIndex;
+			for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
+			{
+				if (GRID[rowIndex][row].block != 0)
+				{
+					PtDestroyWidget(GRID[rowIndex][row].block);
+					GRID[rowIndex][row].block = 0;
 				}
 			}
 		}
-	}
+		else if (rowsToMoveDown > 0)
+		{
+			int rowIndex;
+			for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
+			{
+				if (GRID[rowIndex][row].block != 0)
+				{
+					Block b = {
+						.x = rowIndex,
+						.y = row,
+						.b = GRID[rowIndex][row].block,
+					};
+					moveBlock(&b, 0, rowsToMoveDown);
+				}
+			}
+			lineBlockCount[row+rowsToMoveDown] = lineBlockCount[row];
+			if (row == rowsToMoveDown)
+			{
+				while (rowsToMoveDown >= 0)
+					lineBlockCount[rowsToMoveDown--] = 0;
+			}
+			moved = 1;
+		}
+	}*/
 }
 
 void moveLeft(void)
@@ -308,7 +377,8 @@ void moveBlock(Block *block, int difX, int difY)
 	if (isDebuggingEnabled)
 	{
 		char debugDisplay[100];
-		sprintf(debugDisplay, "0: .x: %ld .y: %ld\n1: .x: %ld .y: %ld\n2: .x: %ld .y: %ld\n3: .x: %ld .y: %ld\n", activeBlocks[0].x, activeBlocks[0].y,activeBlocks[1].x, activeBlocks[1].y, activeBlocks[2].x, activeBlocks[2].y, activeBlocks[3].x, activeBlocks[3].y);
+		//sprintf(debugDisplay, "0: .x: %ld .y: %ld\n1: .x: %ld .y: %ld\n2: .x: %ld .y: %ld\n3: .x: %ld .y: %ld\n", activeBlocks[0].x, activeBlocks[0].y,activeBlocks[1].x, activeBlocks[1].y, activeBlocks[2].x, activeBlocks[2].y, activeBlocks[3].x, activeBlocks[3].y);
+		sprintf(debugDisplay, "13: %ld\n14: %ld\n15: %ld\n16: %ld", lineBlockCount[13], lineBlockCount[14], lineBlockCount[15], lineBlockCount[16]);
 		debug(debugDisplay);
 	}
 }
@@ -380,6 +450,7 @@ void rotateBlock(void)
 			}
 			else if (rotation == 1)
 			{
+
 				x[0] = 1; y[0] = -1;
 				x[1] = 0; y[1] = 0;
 				x[2] = -1; y[2] = 1;
@@ -397,8 +468,8 @@ void rotateBlock(void)
 			else if (rotation == 3)
 			{
 				x[0] = -1; y[0] = 0;
-				x[1] = 0; y[1] = -1;
-				x[2] = 0; y[2] = 0;
+				x[1] = -1; y[1] = -1;
+				x[2] = 1; y[2] = 0;
 				x[3] = -1; y[3] = 1;
 				tmp_rotation = 0;
 			}
@@ -443,16 +514,16 @@ void rotateBlock(void)
 			else if( rotation == 2)
 			{
 				x[0] = -1; y[0] = 1;
-				x[1] = 0; y[1] = 0;
-				x[2] = 2; y[2] = 0;
+				x[1] = 2; y[1] = 0;
+				x[2] = 0; y[2] = 0;
 				x[3] = 0; y[3] = 0;
 				tmp_rotation = 3;
 			}
 			else if( rotation == 3)
 			{
 				x[0] = 0; y[0] = 0;
-				x[1] = -1; y[1] = 0;
-				x[2] = -1; y[2] = 0;
+				x[1] = -2; y[1] = 0;
+				x[2] = 0; y[2] = 0;
 				x[3] = 1; y[3] = 1;
 				tmp_rotation = 0;
 			}
