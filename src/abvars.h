@@ -10,4 +10,7 @@ const int ABN_RightButton = 5;
 const int ABN_testLabel = 6;
 const int ABN_AutoFall = 7;
 const int ABN_Rotatebutton = 8;
+const int ABN_pauseButton = 9;
+const int ABN_scoreLabel = 10;
+const int ABN_clockTimer = 11;
 

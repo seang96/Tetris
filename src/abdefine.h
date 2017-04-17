@@ -19,6 +19,12 @@ extern const int ABN_AutoFall;
 #define ABW_AutoFall                         AbGetABW( ABN_AutoFall )
 extern const int ABN_Rotatebutton;
 #define ABW_Rotatebutton                     AbGetABW( ABN_Rotatebutton )
+extern const int ABN_pauseButton;
+#define ABW_pauseButton                      AbGetABW( ABN_pauseButton )
+extern const int ABN_scoreLabel;
+#define ABW_scoreLabel                       AbGetABW( ABN_scoreLabel )
+extern const int ABN_clockTimer;
+#define ABW_clockTimer                       AbGetABW( ABN_clockTimer )
 
 #define AbGetABW( n ) ( AbWidgets[ n ].wgt )
 

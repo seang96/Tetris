@@ -27,6 +27,10 @@ int lineBlockCount[GridSize];
 int type;
 int rotation;
 int isDebuggingEnabled;
+int gamePlaying;
+int lost;
+int score;
+int seconds;
 
 Block createBlock(int x, int y, PgColor_t color);
 void moveBlock(Block *block, int difX, int difY);

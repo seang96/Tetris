@@ -25,101 +25,148 @@ Block createBlock(int x, int y, PgColor_t color)
 	return b;
 }
 
-void createI(void)
+int createI(void)
 {
+	if (GRID[MiddleBlock-2][0].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0 ||
+		GRID[MiddleBlock][0].block != 0 ||
+		GRID[MiddleBlock+1][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = I;
 	activeBlocks[0] = createBlock(MiddleBlock - 2	, 0, Pg_VGA8);
 	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGA8);
 	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGA8);
 	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGA8);
+	return 1;
 }
 
-void createJ(void)
+int createJ(void)
 {
+	if (GRID[MiddleBlock+1][1].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0 ||
+		GRID[MiddleBlock][0].block != 0 ||
+		GRID[MiddleBlock+1][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = J;
 	activeBlocks[0] = createBlock(MiddleBlock + 1	, 1, Pg_VGA9);
 	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGA9);
 	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGA9);
 	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGA9);
+	return 1;
 }
 
-void createL(void)
+int createL(void)
 {
+	if (GRID[MiddleBlock-1][1].block != 0 ||
+		GRID[MiddleBlock][0].block != 0 ||
+		GRID[MiddleBlock+1][0].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = L;
 	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAA);
 	activeBlocks[1] = createBlock(MiddleBlock	, 0, Pg_VGAA);
 	activeBlocks[2] = createBlock(MiddleBlock + 1	, 0, Pg_VGAA);
 	activeBlocks[3] = createBlock(MiddleBlock - 1	, 0, Pg_VGAA);
+	return 1;
 }
 
-void createO(void)
+int createO(void)
 {
+	if (GRID[MiddleBlock-1][1].block != 0 ||
+		GRID[MiddleBlock][1].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0 ||
+		GRID[MiddleBlock][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = O;
 	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAB);
 	activeBlocks[1] = createBlock(MiddleBlock	, 1, Pg_VGAB);
 	activeBlocks[2] = createBlock(MiddleBlock - 1	, 0, Pg_VGAB);
 	activeBlocks[3] = createBlock(MiddleBlock	, 0, Pg_VGAB);
+	return 1;
 }
 
-void createS(void)
+int createS(void)
 {
+	if (GRID[MiddleBlock-1][1].block != 0 ||
+		GRID[MiddleBlock][1].block != 0 ||
+		GRID[MiddleBlock][0].block != 0 ||
+		GRID[MiddleBlock+1][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = S;
 	activeBlocks[0] = createBlock(MiddleBlock - 1	, 1, Pg_VGAC);
 	activeBlocks[1] = createBlock(MiddleBlock	, 1, Pg_VGAC);
 	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGAC);
 	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGAC);
+	return 1;
 }
 
-void createT(void)
+int createT(void)
 {
+	if (GRID[MiddleBlock][1].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0 ||
+		GRID[MiddleBlock][0].block != 0 ||
+		GRID[MiddleBlock+1][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = T;
 	activeBlocks[0] = createBlock(MiddleBlock	, 1, Pg_VGAD);
 	activeBlocks[1] = createBlock(MiddleBlock - 1	, 0, Pg_VGAD);
 	activeBlocks[2] = createBlock(MiddleBlock	, 0, Pg_VGAD);
 	activeBlocks[3] = createBlock(MiddleBlock + 1	, 0, Pg_VGAD);
+	return 1;
 }
 
-void createZ(void)
+int createZ(void)
 {
+	if (GRID[MiddleBlock][1].block != 0 ||
+		GRID[MiddleBlock+1][1].block != 0 ||
+		GRID[MiddleBlock-1][0].block != 0 ||
+		GRID[MiddleBlock][0].block != 0)
+		return 0;
 	rotation = 0;
 	type = Z;
 	activeBlocks[0] = createBlock(MiddleBlock	, 1, Pg_VGAE);
 	activeBlocks[1] = createBlock(MiddleBlock + 1	, 1, Pg_VGAE);
 	activeBlocks[2] = createBlock(MiddleBlock - 1	, 0, Pg_VGAE);
 	activeBlocks[3] = createBlock(MiddleBlock	, 0, Pg_VGAE);
+	return 1;
 }
 
 void createPiece(void)
 {
 	int type = rand() % 7;
+	int result;
 	switch (type) {
 		case I:
-			createI();
+			result = createI();
 			break;
 		case J:
-			createJ();
+			result = createJ();
 			break;
 		case L:
-			createL();
+			result = createL();
 			break;
 		case O:
-			createO();
+			result = createO();
 			break;
 		case S:
-			createS();
+			result = createS();
 			break;
 		case T:
-			createT();
+			result = createT();
 			break;
 		case Z:
-			createZ();
+			result = createZ();
 			break;
+	}
+	if (!result)
+	{
+		lost = 1;
 	}
 }
 
@@ -127,8 +174,25 @@ void newGame(void)
 {
 	clearBlocks();
 	createPiece();
+	gamePlaying = 1;
+	lost = 0;
+	score = 0;
+	seconds = 0;
 }
 
+void pauseGame(void)
+{
+	gamePlaying = !gamePlaying;
+	char buttonText[7];
+	if (gamePlaying)
+		sprintf(buttonText, "Pause");
+	else
+		sprintf(buttonText, "Resume");
+	PtArg_t args[1];
+	PtSetArg(&args[0], Pt_ARG_TEXT_STRING, buttonText, 0);
+	PtSetResources(ABW_pauseButton, 1, args);
+
+}
 void clearBlocks(void)
 {
 	int x;
@@ -153,11 +217,6 @@ void clearBlocks(void)
 			activeBlocks[x].b = 0;
 		}
 	}
-}
-
-int checkLoseGame(void)
-{
-
 }
 
 void clearLines(void)
@@ -185,12 +244,6 @@ void clearLines(void)
 				{
 					if (GRID[rowIndex][currRow].block != 0)
 					{
-						/*if (isDebuggingEnabled)
-						{
-							char debugDisplay[100];
-							sprintf(debugDisplay, ".x: %ld .y: %ld\n.b:%ld", rowIndex, row, GRID[rowIndex][row].block);
-							debug(debugDisplay);
-						}*/
 						Block b = {
 							.x = rowIndex,
 							.y = currRow,
@@ -206,64 +259,22 @@ void clearLines(void)
 				if (activeBlocks[secondBlockIndex].y < row)
 					activeBlocks[secondBlockIndex].y++;
 			}
-			while (row >= 0)
+			while (row > 0)
 			{
-				if (row == 0)
-					lineBlockCount[row--] = 0;
-				else
-					lineBlockCount[row] = lineBlockCount[--row];
+				lineBlockCount[row] = lineBlockCount[row-1];
+				row--;
 			}
+			lineBlockCount[0] = 0;
 
+			incrementScore();
 		}
 	}
-	/*int row, rowsToMoveDown = 0, moved;
-	for (row = activeBlocks[0].y; row >= 0; row--)
-	{
-		if (lineBlockCount[row] == GridSize)
-		{
-			if (moved)
-				rowsToMoveDown = 0;
-			rowsToMoveDown++;
-			int rowIndex;
-			for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
-			{
-				if (GRID[rowIndex][row].block != 0)
-				{
-					PtDestroyWidget(GRID[rowIndex][row].block);
-					GRID[rowIndex][row].block = 0;
-				}
-			}
-		}
-		else if (rowsToMoveDown > 0)
-		{
-			int rowIndex;
-			for (rowIndex = 0; rowIndex < GridSize; rowIndex++)
-			{
-				if (GRID[rowIndex][row].block != 0)
-				{
-					Block b = {
-						.x = rowIndex,
-						.y = row,
-						.b = GRID[rowIndex][row].block,
-					};
-					moveBlock(&b, 0, rowsToMoveDown);
-				}
-			}
-			lineBlockCount[row+rowsToMoveDown] = lineBlockCount[row];
-			if (row == rowsToMoveDown)
-			{
-				while (rowsToMoveDown >= 0)
-					lineBlockCount[rowsToMoveDown--] = 0;
-			}
-			moved = 1;
-		}
-	}*/
 }
 
 void moveLeft(void)
 {
 	int blockIndex;
-	if (isMoveValid(LEFT))
+	if (gamePlaying && isMoveValid(LEFT))
 		for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
 			moveBlock(&activeBlocks[blockIndex], -1, 0);
 }
@@ -271,7 +282,7 @@ void moveLeft(void)
 void moveRight(void)
 {
 	int blockIndex;
-	if (isMoveValid(RIGHT))
+	if (gamePlaying && isMoveValid(RIGHT))
 		for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
 			moveBlock(&activeBlocks[blockIndex], 1, 0);
 }
@@ -279,10 +290,10 @@ void moveRight(void)
 void moveDown(void)
 {
 	int blockIndex;
-	if (isMoveValid(DOWN))
+	if (gamePlaying && isMoveValid(DOWN))
 		for (blockIndex = 0; blockIndex < BlockSize; blockIndex++)
 			moveBlock(&activeBlocks[blockIndex], 0, 1);
-	else {
+	else if (gamePlaying && !lost) {
 		clearLines();
 		createPiece();
 	}
@@ -377,14 +388,16 @@ void moveBlock(Block *block, int difX, int difY)
 	if (isDebuggingEnabled)
 	{
 		char debugDisplay[100];
-		//sprintf(debugDisplay, "0: .x: %ld .y: %ld\n1: .x: %ld .y: %ld\n2: .x: %ld .y: %ld\n3: .x: %ld .y: %ld\n", activeBlocks[0].x, activeBlocks[0].y,activeBlocks[1].x, activeBlocks[1].y, activeBlocks[2].x, activeBlocks[2].y, activeBlocks[3].x, activeBlocks[3].y);
-		sprintf(debugDisplay, "13: %ld\n14: %ld\n15: %ld\n16: %ld", lineBlockCount[13], lineBlockCount[14], lineBlockCount[15], lineBlockCount[16]);
-		debug(debugDisplay);
+		sprintf(debugDisplay, "0: .x: %ld .y: %ld\n1: .x: %ld .y: %ld\n2: .x: %ld .y: %ld\n3: .x: %ld .y: %ld\n", activeBlocks[0].x, activeBlocks[0].y,activeBlocks[1].x, activeBlocks[1].y, activeBlocks[2].x, activeBlocks[2].y, activeBlocks[3].x, activeBlocks[3].y);
+		//sprintf(debugDisplay, "13: %ld\n14: %ld\n15: %ld\n16: %ld", lineBlockCount[13], lineBlockCount[14], lineBlockCount[15], lineBlockCount[16]);
+		//debug(debugDisplay);
 	}
 }
 
 void rotateBlock(void)
 {
+	if (!gamePlaying)
+		return;
 	int x[BlockSize];
 	int y[BlockSize]; 
 	int tmp_rotation;
@@ -556,6 +569,29 @@ void rotateBlock(void)
 		moveBlock(&activeBlocks[3], x[3], y[3]);
 		rotation = tmp_rotation;
 	}
+}
+
+void incrementScore(void)
+{
+	score += 100;
+	updateStats();
+}
+
+void incrementSeconds(void)
+{
+	if (!gamePlaying || lost)
+		return;
+	seconds++;
+	updateStats();
+}
+
+void updateStats(void)
+{
+	char *stats = malloc(2*sizeof(int)+15);
+	sprintf(stats, "Time: %ld\nScore: %ld", seconds, score);
+	PtArg_t args[1];
+	PtSetArg(&args[0], Pt_ARG_TEXT_STRING, stats, 0);
+	PtSetResources(ABW_scoreLabel, 1, args);
 }
 
 void debug(char debugDisplay[])

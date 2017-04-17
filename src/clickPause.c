@@ -12,16 +12,16 @@
 #include "ablibs.h"
 #include "abimport.h"
 #include "proto.h"
-#include "Engine.h"
+
 
 int
-clickDown( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
+clickPause( PtWidget_t *widget, ApInfo_t *apinfo, PtCallbackInfo_t *cbinfo )
 
 	{
-	int eval = PtEnter(0);
-	while (gamePlaying && isMoveValid(DOWN))
-		moveDown();
-	PtLeave(eval);
+	pauseGame();
+	/* eliminate 'unreferenced' warnings */
+	widget = widget, apinfo = apinfo, cbinfo = cbinfo;
+
 	return( Pt_CONTINUE );
 
 	}

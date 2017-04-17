@@ -12,6 +12,8 @@ static const ApEventLink_t AbLinks_base[] = {
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "RightButton", 2009, clickRight, 0, 0, 0, 0, },
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "AutoFall", 41002, moveDownTimer, 0, 0, 0, 0, },
 	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "Rotatebutton", 2009, rotatecw, 0, 0, 0, 0, },
+	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "pauseButton", 2009, clickPause, 0, 0, 0, 0, },
+	{ 8, 0, 0L, 0L, 0L, NULL, NULL, "clockTimer", 41002, incrementTime, 0, 0, 0, 0, },
 	{ 0 }
 	};
 
